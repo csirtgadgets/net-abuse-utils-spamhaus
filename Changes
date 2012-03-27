@@ -1,0 +1,6 @@
+Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
+
+0.00_01  Tue Mar 27 14:05:27 2012
+	- original version; created by h2xs 1.23 with options
+		-ABXb 5.8.8 Net::Abuse::Utils::Spamhaus
+
