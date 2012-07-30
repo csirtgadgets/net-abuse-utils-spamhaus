@@ -129,11 +129,16 @@ foreach(20 ... 39){
 sub _return_rr {
     my $lookup  = shift;
     my $type    = shift || 'A';
+    my $timeout = shift;
     
     # little more thread friendly
     require Net::DNS::Resolver;
     my $r = Net::DNS::Resolver->new(recursive => 0);
 
+    if($timeout){
+      $r->udp_timeout($timeout);
+      $r->tcp_timeout($timeout);
+    }
     my $pkt = $r->send($lookup);
     my @rdata = $pkt->answer();
     return unless(@rdata);
@@ -152,9 +157,10 @@ sub _return_rr {
 
 sub check_fqdn {
     my $addr = shift;
+    my $timeout = shift;
 
     my $lookup = $addr.'.dbl.spamhaus.org';
-    my $rdata = _return_rr($lookup);
+    my $rdata = _return_rr($lookup,undef,$timeout);
 
     my @array;
     foreach (@$rdata){
@@ -180,12 +186,13 @@ sub check_fqdn {
 
 sub check_ip {
     my $addr = shift;
+    my $timeout = shift;
    
     my @bits = split(/\./,$addr);
     my $lookup = join('.',reverse(@bits));
     $lookup .= '.zen.spamhaus.org';
 
-    my $rdata = _return_rr($lookup);
+    my $rdata = _return_rr($lookup,undef,$timeout);
     
     my @array;
     foreach (@$rdata){
