@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
+0.01    2012-08-02
+    - version bump
+
 0.00_02 2012-07-31
     - added timeout arg
 
