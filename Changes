@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
+0.02    2012-08-03
+    - spelling error in README
+
 0.01    2012-08-02
     - version bump
 

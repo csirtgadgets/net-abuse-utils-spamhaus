@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -228,7 +228,7 @@ Wes Young, E<lt>wes@barely3am.comE<gt>
 
   Copyright (C) 2012 by Wes Young (claimid.com/wesyoung)
   Copyright (C) 2012 the REN-ISAC (ren-isac.net)
-  Copyright (C) 2012 the Trusties of Indiana University (www.iu.edu)
+  Copyright (C) 2012 the Trustees of Indiana University (www.iu.edu)
 
   This library is free software; you can redistribute it and/or modify
   it under the same terms as Perl itself, either Perl version 5.10.1 or,
