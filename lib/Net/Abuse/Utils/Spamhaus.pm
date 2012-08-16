@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -140,6 +140,7 @@ sub _return_rr {
       $r->tcp_timeout($timeout);
     }
     my $pkt = $r->send($lookup);
+    return unless($pkt);
     my @rdata = $pkt->answer();
     return unless(@rdata);
     return (\@rdata);
