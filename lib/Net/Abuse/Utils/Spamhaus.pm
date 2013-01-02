@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.03_01';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -167,6 +167,11 @@ sub check_fqdn {
     foreach (@$rdata){
         next unless($_->{'type'} eq 'A');
         my $code = $fqdn_codes->{$_->{'address'}};
+        unless($code){
+            warn 'unknown return code: '.$_->{'address'}.' library needs updating, contact module author';
+            $code->{'description'} = 'unknown' unless($code->{'description'});
+            $code->{'assessment'} = 'unknown' unless($code->{'assessment'});
+        }
 
         return if($code->{'description'} =~ /BANNED/);
         push(@array,{
