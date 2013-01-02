@@ -120,7 +120,7 @@ foreach(20 ... 39){
     };
 }
 
-foreach(20 ... 39){
+foreach(40 ... 39){
    $fqdn_codes->{'127.0.1.'.$_} = {
         assessment  => 'malware',
     };
@@ -165,6 +165,7 @@ sub check_fqdn {
 
     my @array;
     foreach (@$rdata){
+        next unless($_->{'address'});
         next unless($_->{'type'} eq 'A');
         my $code = $fqdn_codes->{$_->{'address'}};
         unless($code){
