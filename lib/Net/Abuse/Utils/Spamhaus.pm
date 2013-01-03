@@ -206,21 +206,23 @@ sub check_ip {
     $lookup .= '.zen.spamhaus.org';
 
     my $rdata = _return_rr($lookup,undef,$timeout);
+    return unless($rdata);
     
-    my @array;
+    my $array;
     foreach (@$rdata){
-        next unless($_->{'type'} eq 'A');
-        my $code = $ip_codes->{$_->{'address'}};
+        next unless($_->type() eq 'A');
+        my $code = $ip_codes->{$_->address()};
 
+        # these aren't really malicious assessments, skip them
         # see http://www.spamhaus.org/faq/answers.lasso?section=Spamhaus%20PBL#183
-        next if($_->{'address'} =~ /\.(10|11)$/);
-        push(@array,{
+        next if($_->address() =~ /\.(10|11)$/);
+        push(@$array,{
             assessment  => $code->{'assessment'},
             description => $code->{'description'},
             id          => 'http://www.spamhaus.org/query/bl?ip='.$addr,
         });
     }
-    return(\@array);
+    return($array);
 } 
     
 1;
