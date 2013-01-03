@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
+0.04    2013-01-03
+    - version bump
+
 0.03_01 2013-01-02
     - extra checking for unknown return codes
     - updated to work with newer versions of Net::DNS
