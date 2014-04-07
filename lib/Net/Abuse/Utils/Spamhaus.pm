@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -120,9 +120,15 @@ foreach(20 ... 39){
     };
 }
 
-foreach(40 ... 39){
+foreach(40 ... 59){
    $fqdn_codes->{'127.0.1.'.$_} = {
         assessment  => 'malware',
+    };
+}
+
+foreach(60 ... 79){
+    $fqdn_codes->{'127.0.1.'.$_} = {
+        assessment => 'botnet',
     };
 }
 
@@ -231,7 +237,6 @@ __END__
 
 =head1 SEE ALSO
 
-  github.com/collectiveintel
   http://www.spamhaus.org/zen/
   http://www.spamhaus.org/dbl/
 
@@ -241,9 +246,7 @@ Wes Young, E<lt>wes@barely3am.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-  Copyright (C) 2012 by Wes Young (claimid.com/wesyoung)
-  Copyright (C) 2012 the REN-ISAC (ren-isac.net)
-  Copyright (C) 2012 the Trustees of Indiana University (www.iu.edu)
+  Copyright (C) 2012 by Wes Young (wesyoung.me)
 
   This library is free software; you can redistribute it and/or modify
   it under the same terms as Perl itself, either Perl version 5.10.1 or,
