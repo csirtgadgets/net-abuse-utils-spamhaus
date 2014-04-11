@@ -2,6 +2,7 @@ Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
 0.05    2014-04-07
     - bugfix to DBL api
+    - debfix, Net::DNS 0.74
 
 0.04    2013-01-03
     - version bump
