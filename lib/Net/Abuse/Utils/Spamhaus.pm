@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -102,35 +102,38 @@ my $fqdn_codes = {
         assessment  => 'suspicious',
         description => 'spammed redirector domain',
     },
+    '127.0.1.4' => {
+        assessment  => 'phishing',
+        description => 'phishing domain',
+    },
+    '127.0.1.5' => {
+        assessment  => 'malware',
+        description => 'malware domain',
+    },
+    '127.0.1.102' => {
+        assessment  => 'suspicious',
+        description => 'abused legit spam',
+    },
+    '127.0.1.103' => {
+        assessment  => 'suspicious',
+        description => 'abused legit spammed redirector',
+    },
+    '127.0.1.104' => {
+        assessment  => 'phishing',
+        description => 'abused legit phish',
+    },
+    '127.0.1.105' => {
+        assessment  => 'malware',
+        description => 'abused legit malware',
+    },
+    '127.0.1.106' => {
+        assessment  => 'botnet',
+        description => 'abused legit botnet',
+    },
     '127.0.1.255'   => {
         description => 'BANNED',
     },
 };
-
-foreach(4 ... 19){
-    $fqdn_codes->{'127.0.1.'.$_} = {
-        assessment  => 'suspicious',
-        description => 'spammed domain',
-    };
-}
-
-foreach(20 ... 39){
-   $fqdn_codes->{'127.0.1.'.$_} = {
-        assessment  => 'phishing',
-    };
-}
-
-foreach(40 ... 59){
-   $fqdn_codes->{'127.0.1.'.$_} = {
-        assessment  => 'malware',
-    };
-}
-
-foreach(60 ... 79){
-    $fqdn_codes->{'127.0.1.'.$_} = {
-        assessment => 'botnet',
-    };
-}
 
 sub _return_rr {
     my $lookup  = shift;
