@@ -4,7 +4,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.06_01';
+our $VERSION = '0.06_02';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 =head1 NAME
@@ -78,10 +78,6 @@ my $ip_codes = {
         assessment  => 'exploit',
         description => 'CBL + customised NJABL. 3rd party exploits (proxies, trojans, etc.)',
     },
-    '127.0.0.8' => {
-        assessment  => 'exploit',
-        description => 'CBL + customised NJABL. 3rd party exploits (proxies, trojans, etc.)',
-    },
     '127.0.0.10' => {
         assessment  => 'spam',
         description => 'End-user Non-MTA IP addresses set by ISP outbound mail policy',
@@ -100,7 +96,7 @@ my $fqdn_codes = {
     },
     '127.0.1.3' => {
         assessment  => 'suspicious',
-        description => 'spammed redirector domain',
+        description => 'spammed redirector / url shortener',
     },
     '127.0.1.4' => {
         assessment  => 'phishing',
@@ -109,6 +105,10 @@ my $fqdn_codes = {
     '127.0.1.5' => {
         assessment  => 'malware',
         description => 'malware domain',
+    },
+    '127.0.1.6' => {
+        assessment  => 'botnet',
+        description => 'Botnet C&C domain',
     },
     '127.0.1.102' => {
         assessment  => 'suspicious',
