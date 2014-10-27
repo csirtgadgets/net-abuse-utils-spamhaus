@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
+0.06_02 2014-10-27
+    - updated return codes
+
 0.06_01 2014-08-16
     - adding more debugging information
 
