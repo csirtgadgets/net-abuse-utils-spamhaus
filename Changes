@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Abuse::Utils::Spamhaus.
 
+0.09 2016-06-07
+    - version bump for pause mis-hap
+
 0.08 2016-06-07
     - bugfix for new return codes in ZEN list
 
