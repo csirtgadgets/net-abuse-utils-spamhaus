@@ -78,6 +78,10 @@ my $ip_codes = {
         assessment  => 'exploit',
         description => 'CBL + customised NJABL. 3rd party exploits (proxies, trojans, etc.)',
     },
+    '127.0.0.9' => {
+        assessment  => 'suspicious',
+        description => 'hijacked prefix',
+    },
     '127.0.0.10' => {
         assessment  => 'spam',
         description => 'End-user Non-MTA IP addresses set by ISP outbound mail policy',
@@ -221,6 +225,12 @@ sub check_ip {
     foreach (@$rdata){
         next unless($_->type() eq 'A');
         my $code = $ip_codes->{$_->address()};
+        
+        unless($code){
+            warn 'unknown return code: '.$_->address().' library ('.$VERSION.') needs updating, contact module author ('.$lookup.')';
+            $code->{'description'} = 'unknown' unless($code->{'description'});
+            $code->{'assessment'} = 'unknown' unless($code->{'assessment'});
+        }
 
         # these aren't really malicious assessments, skip them
         # see http://www.spamhaus.org/faq/answers.lasso?section=Spamhaus%20PBL#183
